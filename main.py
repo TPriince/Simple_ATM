@@ -26,7 +26,7 @@ while True:
     while (user_input != "1" and user_input != "2" and user_input != "3"):
         print("")
         print("Invalid input\n")
-        user_input = input("Please enter either 1, 2 or 3: ")
+        user_input = input("Please enter either 1, 2 or 3 ")
 
     if user_input == "1":
         new_name = input("Enter your name: ")
@@ -48,75 +48,82 @@ while True:
         registered_users[new_name] = new_password
         print("")
         print("Hello {}, you have been successfully registered!".format(new_name))
+        print("")
+        quest = input("Would you like to make another transaction: Y/n? ")
+
+        while (quest != "Y" and quest != "N" and quest != "y" and quest != "n"):
+            print("")
+            quest = input("Would you like to make another transaction: Y/n? ")
+        
+        if quest == "N" or quest == "n":
+            break
+
+        else:
+            pass
 
 
     if user_input == "2":
         user_name = input("Enter your name: ")
-        if user_name in registered_users:
-            user_password = input("Enter your password: ")
+        while (user_name not in registered_users):
+            print("Name does not exist\n")
+            user_name = input("Enter your name: ")
             print("")
-            if user_password == registered_users[user_name]:
-                print("Welcome {}. Please make a selection:".format(user_name))
 
-                while True:
-                    print("Press 1 to Check account balance")
-                    print("Press 2 to Deposit")
-                    print("Press 3 to Withdraw")
-                    print("Press 4 to End\n")
-                    user_choice = input()
+        user_password = input("Enter your password: ")
+        while (user_password != registered_users[user_name]):
+            print("Incorrect password\n")
+            user_password = input("Enter your password: ")
 
-                    while (user_choice != "1" and user_choice != "2" and user_choice != "3" and user_choice != "4"):
-                        print("Invalid choice.\n")
-                        user_choice = input("Please, select either 1, 2, 3, or 4" )
+        print("")
+        print("Welcome {}. Please make a selection:".format(user_name))
+        while True:
+            print("Press 1 to Check account balance")
+            print("Press 2 to Deposit")
+            print("Press 3 to Withdraw")
+            print("Press 4 to End\n")
+            user_choice = input()
 
-                    if user_choice == "1":
-                        print("Your account balance is {}".format(registered_users_cash[user_name]))
-                        print("")
-                        quest = input("Would you like to make another transaction: Y/n? ")
+            while (user_choice != "1" and user_choice != "2" and user_choice != "3" and user_choice != "4"):
+                print("Invalid choice.\n")
+                user_choice = input("Please, select either 1, 2, 3, or 4" )
 
-                    if user_choice == "2":
-                        dep_amount = int(input("How much wold you like to deposit? "))
-                        registered_users_cash[user_name] += dep_amount
-                        print("An amount of {} has been successfully deposited into your account".format(dep_amount))
-                        print("Acount balance: {}.".format(registered_users_cash[user_name]))
-                        print("")
-                        quest = input("Would you like to make another transaction: Y/n? ")
+            if user_choice == "1":
+                print("Your account balance is {}".format(registered_users_cash[user_name]))
+                print("")
+                quest = input("Would you like to make another transaction: Y/n? ")
 
-                    if user_choice == "3":
-                        withdrawal_amount = int(input("How much woukd you like to withdraw? "))
-                        registered_users_cash[user_name] -= withdrawal_amount
-                        print("Withdrawal of {} was successful".format(withdrawal_amount))
-                        print("Account balance: {}".format(registered_users_cash[user_name]))
-                        print("")
-                        quest = input("Would you like to make another transaction: Y/n? ")
+            if user_choice == "2":
+                dep_amount = int(input("How much wold you like to deposit? "))
+                registered_users_cash[user_name] += dep_amount
+                print("An amount of {} has been successfully deposited into your account".format(dep_amount))
+                print("Acount balance: {}.".format(registered_users_cash[user_name]))
+                print("")
+                quest = input("Would you like to make another transaction: Y/n? ")
 
-                    if user_choice == "4":
-                        break
+            if user_choice == "3":
+                withdrawal_amount = int(input("How much woukd you like to withdraw? "))
+                registered_users_cash[user_name] -= withdrawal_amount
+                print("Withdrawal of {} was successful".format(withdrawal_amount))
+                print("Account balance: {}".format(registered_users_cash[user_name]))
+                print("")
+                quest = input("Would you like to make another transaction: Y/n? ")
 
-                    if quest == "n":
-                        break
+            if user_choice == "4":
+                break
 
-                    else:
-                        pass
-
+            while (quest != "Y" and quest != "N" and quest != "y" and quest != "n"):
+                print("")
+                quest = input("Would you like to make another transaction: Y/n? ")
+                        
+            if quest == "N" or quest == "n":
+                break
+                    
             else:
-                print("Incorrect password\n")
-
-        else:
-            print("Incorrect username\n")
-
-
-    if user_input == "3":
-        pass
-
-
-    print("")
-    quest = input("Would you like to make another transaction: Y/n? ")
-
-    if quest == "n":
+                pass
+        
         break
 
-    else:
-        pass
+    if user_input == "3":
+        break
 
 print("Thank you for bankimg with us!")
