@@ -103,11 +103,17 @@ while True:
 
             if user_choice == "3":
                 withdrawal_amount = int(input("How much woukd you like to withdraw? "))
-                registered_users_cash[user_name] -= withdrawal_amount
-                print("Withdrawal of {} was successful".format(withdrawal_amount))
-                print("Account balance: {}".format(registered_users_cash[user_name]))
-                print("")
-                quest = input("Would you like to make another transaction: Y/n? ")
+                if withdrawal_amount > registered_users_cash[user_name]:
+                    print("Insufficient funds")
+                    print("")
+                    quest = input("Would you like to make another transaction: Y/n? ")
+                
+                else:
+                    registered_users_cash[user_name] -= withdrawal_amount
+                    print("Withdrawal of {} was successful".format(withdrawal_amount))
+                    print("Account balance: {}".format(registered_users_cash[user_name]))
+                    print("")
+                    quest = input("Would you like to make another transaction: Y/n? ")
 
             if user_choice == "4":
                 break
