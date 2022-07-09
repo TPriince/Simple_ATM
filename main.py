@@ -1,4 +1,4 @@
-# A simple ATM implementation using Python
+# A simple ATM using Python
 
 # Sample dictionary of registered users and their passwords
 registered_users = {
@@ -7,6 +7,7 @@ registered_users = {
     "Ahmed": "mypassword8"
 }
 
+# Sample dictionary of registered users cash
 registered_users_cash = {
     "Tayo": 60000,
     "Sharon": 300,
