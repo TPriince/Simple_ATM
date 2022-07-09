@@ -46,6 +46,7 @@ while True:
             confirm_password = input("Confirm password: ")
 
         registered_users[new_name] = new_password
+        registered_users_cash[new_name] = 0
         print("")
         print("Hello {}, you have been successfully registered!".format(new_name))
         print("")
